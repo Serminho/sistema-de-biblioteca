@@ -37,7 +37,7 @@ void exibirMenu() {
     printf("============================================\n");
     printf("|         SISTEMA DE BIBLIOTECA            |\n");
     printf("|------------------------------------------|\n");
-    printf("|   OpÁ„o    |        DescriÁ„o            |\n");
+    printf("|   Op√ß√£o    |        Descri√ß√£o            |\n");
     printf("|------------|-----------------------------|\n");
     printf("|     1      | Cadastrar livro             |\n");
     printf("|------------|-----------------------------|\n");
@@ -62,7 +62,7 @@ void cadastrarLivro() {
     }
 
     Livro novoLivro;
-    printf("Digite o tÌtulo do livro: ");
+    printf("Digite o t√≠tulo do livro: ");
     scanf(" %[^\n]", novoLivro.titulo);
     printf("Digite o autor do livro: ");
     scanf(" %[^\n]", novoLivro.autor);
@@ -83,11 +83,11 @@ void listarLivros() {
     printf("============================================\n");
 
     if (totalLivros == 0) {
-        printf("N„o h· livros cadastrados.\n");
+        printf("N√£o h√° livros cadastrados.\n");
         return;
     }
 
-    printf("| CÛdigo |          TÌtulo        | Status |\n");
+    printf("| C√≥digo |          T√≠tulo        | Status |\n");
     printf("|--------|------------------------|--------|\n");
 
     for (i = 0; i < totalLivros; i++) {
@@ -99,26 +99,26 @@ void listarLivros() {
 void listarDisponibilidade() {
 	int i;
     printf("============================================\n");
-    printf("|         LIVROS DISPONÕVEIS               |\n");
+    printf("|         LIVROS DISPON√çVEIS               |\n");
     printf("============================================\n");
     int encontrados = 0;
     for (i = 0; i < totalLivros; i++) {
         if (biblioteca[i].disponivel) {
-            printf("| CÛdigo: %d | TÌtulo: %s | Autor: %s |\n", biblioteca[i].codigo, biblioteca[i].titulo, biblioteca[i].autor);
+            printf("| C√≥digo: %d | T√≠tulo: %s | Autor: %s |\n", biblioteca[i].codigo, biblioteca[i].titulo, biblioteca[i].autor);
             encontrados = 1;
         }
     }
     if (!encontrados) {
-        printf("Nenhum livro disponÌvel.\n");
+        printf("Nenhum livro dispon√≠vel.\n");
     }
 
     printf("\n=============================================\n");
-    printf("|         LIVROS INDISPONÕVEIS              |\n");
+    printf("|         LIVROS INDISPON√çVEIS              |\n");
     printf("=============================================\n");
     encontrados = 0;
     for (i = 0; i < totalLivros; i++) {
         if (!biblioteca[i].disponivel) {
-            printf("| CÛdigo: %d | TÌtulo: %s | Autor: %s |\n", biblioteca[i].codigo, biblioteca[i].titulo, biblioteca[i].autor);
+            printf("| C√≥digo: %d | T√≠tulo: %s | Autor: %s |\n", biblioteca[i].codigo, biblioteca[i].titulo, biblioteca[i].autor);
             encontrados = 1;
         }
     }
@@ -129,28 +129,28 @@ void listarDisponibilidade() {
 
 void emprestarLivro() {
     printf("============================================\n");
-    printf("|           EMPR…STIMO DE LIVRO            |\n");
+    printf("|           EMPR√âSTIMO DE LIVRO            |\n");
     printf("============================================\n");
 
     if (totalLivros == 0) {
-        printf("N„o h· livros cadastrados.\n");
+        printf("N√£o h√° livros cadastrados.\n");
         return;
     }
 
     listarDisponibilidade();
 
     int codigo;
-    printf("\nDigite o cÛdigo do livro para emprestar: ");
+    printf("\nDigite o c√≥digo do livro para emprestar: ");
     scanf("%d", &codigo);
     
     if (codigo < 1 || codigo > totalLivros) {
-        printf("CÛdigo inv·lido!\n");
+        printf("C√≥digo inv√°lido!\n");
         return;
     }
     
     int index = codigo - 1;
     if (!biblioteca[index].disponivel) {
-        printf("Livro j· est· emprestado!\n");
+        printf("Livro j√° est√° emprestado!\n");
         return;
     }
     
@@ -160,26 +160,26 @@ void emprestarLivro() {
 
 void devolverLivro() {
     printf("============================================\n");
-    printf("|            DEVOLU«√O DE LIVRO            |\n");
+    printf("|            DEVOLU√á√ÉO DE LIVRO            |\n");
     printf("============================================\n");
 
     if (totalLivros == 0) {
-        printf("N„o h· livros cadastrados.\n");
+        printf("N√£o h√° livros cadastrados.\n");
         return;
     }
 
     int codigo;
-    printf("Digite o cÛdigo do livro: ");
+    printf("Digite o c√≥digo do livro: ");
     scanf("%d", &codigo);
     
     if (codigo < 1 || codigo > totalLivros) {
-        printf("CÛdigo inv·lido!\n");
+        printf("C√≥digo inv√°lido!\n");
         return;
     }
     
     int index = codigo - 1;
     if (biblioteca[index].disponivel) {
-        printf("Livro n„o est· emprestado!\n");
+        printf("Livro n√£o est√° emprestado!\n");
         return;
     }
     
@@ -195,7 +195,7 @@ int main() {
     do {
         limparTela();
         exibirMenu();
-        printf("Escolha uma opÁ„o: ");
+        printf("Escolha uma op√ß√£o: ");
         scanf("%d", &opcao);
         
         limparTela();
@@ -221,7 +221,7 @@ int main() {
                 printf("Saindo...\n");
                 break;
             default:
-                printf("OpÁ„o inv·lida!\n");
+                printf("Op√ß√£o inv√°lida!\n");
                 pausar();
         }
     } while (opcao != 0);
